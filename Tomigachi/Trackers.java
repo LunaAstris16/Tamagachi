@@ -10,7 +10,6 @@ public class Trackers {
     public int seconds;
     public int max;
     public int min;
-    public boolean returnvalue = false;
 
     public Trackers(int delay, int period, int max, int min) {
         this.delay = delay;
@@ -21,30 +20,24 @@ public class Trackers {
 
     Timer myTimer = new Timer();
     TimerTask myTask = new TimerTask() {
-        int secounds = 0;
         public void run() {
-            secounds++;
+            this.seconds++;
             System.out.println(seconds);
             if (seconds == 10) {
-                System.out.println("found5");
                 double randomint = Math.floor(Math.random() * (max - min + 1) + min);
-                System.out.println(randomint);
-                if (randomint == 1) {
-                    returnvalue = true;
-                    System.out.println(returnvalue);
-                    returnValue();
-
-                } else {
-                    System.out.println(returnvalue);
-                }
                 seconds = 0;
-                returnvalue = false;
             }
         }
     };
 
     public boolean returnValue(){
-        return true;
+        while (true) {
+            if (seconds == 10) {
+                System.out.println("found 6");
+                return true;
+            }
+            return false;
+        }
     }
 
     public void timeInitialization() {
